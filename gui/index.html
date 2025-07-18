@@ -501,6 +501,8 @@ span.mainfunction {color: #993300; font-weight: bolder}
 		{"type":"AudioPlaySdWav","data":{"defaults":{"name":{"value":"new"}},"shortName":"playSdWav","inputs":0,"outputs":2,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
 		
 		{"type":"AudioPlayWAVstereo","data":{"defaults":{"name":{"value":"new"}},"shortName":"playWAVstereo","inputs":0,"outputs":2,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
+		{"type":"AudioPlayInMemoryStereo","data":{"defaults":{"name":{"value":"new"}},"shortName":"playInMemoryStereo","inputs":0,"outputs":2,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
+		
 		{"type":"AudioPlayWAVquad",  "data":{"defaults":{"name":{"value":"new"}},"shortName":"playWAVquad",  "inputs":0,"outputs":4,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
 		{"type":"AudioPlayWAVhex",   "data":{"defaults":{"name":{"value":"new"}},"shortName":"playWAVhex",   "inputs":0,"outputs":6,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
 		{"type":"AudioPlayWAVoct",   "data":{"defaults":{"name":{"value":"new"}},"shortName":"playWAVoct",   "inputs":0,"outputs":8,"category":"play-function","color":"#E6E0F8","icon":"arrow-in.png"}},
@@ -3139,6 +3141,31 @@ Returns the actual achieved attenuation of the anti-aliasing filter. If the inpu
 
 </script>
 <script type="text/x-red" data-template-name="AudioPlayWAVstereo">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+</script>
+
+<!-- ------------------------------------------------------------------------------------------------------------- --->
+ <script type="text/x-red" data-template-name="AudioPlayInMemoryStereo">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+</script>
+
+<!-- ------------------------------------------------------------------------------------------------------------- --->
+
+<script type="text/x-red" data-template-name="AudioMixer8">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+</script>
+
+<!-- ------------------------------------------------------------------------------------------------------------- --->
+<script type="text/x-red" data-template-name="AudioMixer16">
 	<div class="form-row">
 		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" placeholder="Name">

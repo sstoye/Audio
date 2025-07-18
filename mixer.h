@@ -66,6 +66,78 @@ private:
 #endif
 };
 
+class AudioMixer8 : public AudioStream
+{
+#if defined(__ARM_ARCH_7EM__)
+public:
+	AudioMixer8(void) : AudioStream(8, inputQueueArray) {
+		for (int i=0; i<8; i++) multiplier[i] = 65536;
+	}
+	virtual void update(void);
+	void gain(unsigned int channel, float gain) {
+		if (channel >= 8) return;
+		if (gain > 32767.0f) gain = 32767.0f;
+		else if (gain < -32767.0f) gain = -32767.0f;
+		multiplier[channel] = gain * 65536.0f; // TODO: proper roundoff?
+	}
+private:
+	int32_t multiplier[8];
+	audio_block_t *inputQueueArray[8];
+
+#elif defined(KINETISL)
+public:
+	AudioMixer8(void) : AudioStream(8, inputQueueArray) {
+		for (int i=0; i<8; i++) multiplier[i] = 256;
+	}
+	virtual void update(void);
+	void gain(unsigned int channel, float gain) {
+		if (channel >= 8) return;
+		if (gain > 127.0f) gain = 127.0f;
+		else if (gain < -127.0f) gain = -127.0f;
+		multiplier[channel] = gain * 256.0f; // TODO: proper roundoff?
+	}
+private:
+	int16_t multiplier[8];
+	audio_block_t *inputQueueArray[8];
+#endif
+};
+
+class AudioMixer16 : public AudioStream
+{
+#if defined(__ARM_ARCH_7EM__)
+public:
+	AudioMixer16(void) : AudioStream(16, inputQueueArray) {
+		for (int i=0; i<16; i++) multiplier[i] = 65536;
+	}
+	virtual void update(void);
+	void gain(unsigned int channel, float gain) {
+		if (channel >= 16) return;
+		if (gain > 32767.0f) gain = 32767.0f;
+		else if (gain < -32767.0f) gain = -32767.0f;
+		multiplier[channel] = gain * 65536.0f; // TODO: proper roundoff?
+	}
+private:
+	int32_t multiplier[16];
+	audio_block_t *inputQueueArray[16];
+
+#elif defined(KINETISL)
+public:
+	AudioMixer16(void) : AudioStream(16, inputQueueArray) {
+		for (int i=0; i<16; i++) multiplier[i] = 256;
+	}
+	virtual void update(void);
+	void gain(unsigned int channel, float gain) {
+		if (channel >= 16) return;
+		if (gain > 127.0f) gain = 127.0f;
+		else if (gain < -127.0f) gain = -127.0f;
+		multiplier[channel] = gain * 256.0f; // TODO: proper roundoff?
+	}
+private:
+	int16_t multiplier[16];
+	audio_block_t *inputQueueArray[16];
+#endif
+};
+
 class AudioAmplifier : public AudioStream
 {
 public:
